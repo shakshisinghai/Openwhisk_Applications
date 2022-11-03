@@ -34,5 +34,7 @@ sudo vi /etc/docker/daemon.json
     }
 }
 
-
 ```
+
+https://pypi.org/project/torchvision/
+
