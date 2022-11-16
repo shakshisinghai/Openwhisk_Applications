@@ -34,13 +34,15 @@ Test Command:
 
 ` python main.py eval --content-image images/content/sunflower.jpg --style-image images/21styles/pencil.jpg --model models/21styles.model --content-size 1024 `
 
-## Function 3: [Image Classification] (https://pytorch.org/hub/nvidia_deeplearningexamples_resnet50/)
+## Function 3: [Image Classification](https://pytorch.org/hub/nvidia_deeplearningexamples_resnet50/)
 
 **Input:** Image
 
 **Output:** Classification result as String 
 
 **Max batch size possible:** 1024
+
+For Now I am usinG Resnet 50 but we can try Image classification with different architectures in our Experiment.
 
  
 
