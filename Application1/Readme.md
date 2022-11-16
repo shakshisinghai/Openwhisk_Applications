@@ -15,11 +15,11 @@ Test Command :
 
 ![image](https://user-images.githubusercontent.com/37688219/202236262-bd80ddd9-f7e9-45f2-be1f-fd448d1b8fde.png)
 
+
+
 ## Function 2: [Multi Style Transfer](https://github.com/zhanghang1989/PyTorch-Multi-Style-Transfer.git)
 
 **Input:** Image
-
-
 
 <img src="https://user-images.githubusercontent.com/37688219/202237316-2a61d32f-e04c-4002-8c8f-caca0fcda885.png" width="300" height="300">
 
@@ -30,9 +30,13 @@ Test Command :
 
 Max batch size possible : 4 
 
+We can try running this experiment with different style images.
+
 Test Command:
 
 ` python main.py eval --content-image images/content/sunflower.jpg --style-image images/21styles/pencil.jpg --model models/21styles.model --content-size 1024 `
+
+
 
 ## Function 3: [Image Classification](https://pytorch.org/hub/nvidia_deeplearningexamples_resnet50/)
 
@@ -44,7 +48,7 @@ Test Command:
 
 For Now I am usinG Resnet 50 but we can try Image classification with different architectures in our Experiment.
 
- 
+
 
 ## Sample Experiment
 
@@ -53,7 +57,7 @@ For Now I am usinG Resnet 50 but we can try Image classification with different 
 I tried running each function individually and passed the output of one function to another.
 
 
-** Results:**
+**Results:**
 
 ![image](https://user-images.githubusercontent.com/37688219/202244862-ce97f94e-1f60-4810-a1fd-c4dff56f5413.png)
 
