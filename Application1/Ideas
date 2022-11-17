@@ -1,0 +1,14 @@
+
+Things we can do
+	• ocr- > newarticle bert model summarize -> sentiment analysis
+	• Image segment and noise the segment -> remove these segment -> resolution
+		○ https://medium.com/analytics-vidhya/removing-objects-from-pictures-with-deep-learning-5e7c35f3f0dd
+
+Individual function working 
+	• Coloring-greyscale-images
+
+Ideas:
+	• Remove background 
+	• Image -> text -> sentiment 
+	• Image-> caption -> sentiment analyis 
+	
