@@ -11,7 +11,10 @@ source /home/cc/anaconda3/bin/activate
 
 Installing dependencies
 
-```conda env create -f environment.yml 
+```
+
+conda env create -f environment.yml 
+
 conda activate resnet
 ```
 
