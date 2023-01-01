@@ -31,3 +31,9 @@ python resnet50.py
 cd Serverless_Application\Segmentation
 python segment.py
 ```
+
+```
+pip install tqdm
+pip install opencv-python
+pip install seaborn
+```
