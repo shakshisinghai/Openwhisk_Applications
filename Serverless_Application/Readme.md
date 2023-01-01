@@ -31,9 +31,12 @@ python resnet50.py
 cd Serverless_Application\Segmentation
 python segment.py
 ```
-
+cd Serverless_Application\Yolo_object_detection\
 ```
 pip install tqdm
 pip install opencv-python
 pip install seaborn
+
+python yolo.py 0
+
 ```
