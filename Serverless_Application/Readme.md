@@ -41,3 +41,7 @@ cd Serverless_Application\Yolo_object_detection\
 python yolo.py 0
 
 ```
+
+```
+cd Serverless_Application\DeblurGAN\
+python test.py --dataroot C:\Users\ishus\Documents\NCSU\AWS_DL_Project\DeblurGAN\images\ --model test --dataset_mode single --learn_residual 
