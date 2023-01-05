@@ -25,11 +25,12 @@ class TestModel(BaseModel):
         networks.print_network(self.netG)
         print('-----------------------------------------------')
 
-    def set_input(self, input, batch_size):
+    def set_input(self, input, batch_size, count):
         # we need to use single_dataset mode
         input_A = input['A']
         temp = self.input_A.clone()
-        temp = torch.cat([temp]*batch_size, 0)
+        if count == 1:
+            temp = torch.cat([temp]*batch_size, 0)
         print("temp size", temp.size())
         self.input_A = temp
         self.image_paths = input['A_paths']
