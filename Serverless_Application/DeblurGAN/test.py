@@ -11,7 +11,7 @@ from ssim import SSIM
 from PIL import Image
 import pandas as pd
 
-sm = 0
+sm = 7
 batch_size = 2
 
 
@@ -35,7 +35,7 @@ if __name__ == '__main__':
 		# Print the result
 		print("Process is eligible to run on:", affinity)
 
-		cpu_count = [2, 4, 8, 16, 32, 48]
+		cpu_count = [2, 4, 8, 16]
 		for count in cpu_count:
 			deblur_file = pd.read_csv('deblur_result_1.csv')
 			cpu_info, load_model, prepare_data, run_inference, total_time, cpu_count, batch_size_list, inference_per_image = [], [], [], [], [], [], [], []
@@ -72,7 +72,15 @@ if __name__ == '__main__':
 			print("Inference Started")
 
 			total_inference_time = 0
-			infernce_run = min(1, 1024// batch_size)
+			infernce_run = min(10, 1024// batch_size)
+			start = 1
+			for i, data in enumerate(dataset):
+				if i >= opt.how_many:
+					break
+				counter = i
+				model.set_input(data, batch_size, start)
+				model.test()
+				start+=1
 
 			for i in range(infernce_run):
 				start_run_inference = time.time()
@@ -80,7 +88,7 @@ if __name__ == '__main__':
 					if i >= opt.how_many:
 						break
 					counter = i
-					model.set_input(data, batch_size)
+					model.set_input(data, batch_size, start)
 					model.test()
 				end_run_inference = time.time()
 				total_inference_time += (end_run_inference - start_run_inference)
@@ -90,6 +98,7 @@ if __name__ == '__main__':
 			end_total_time = time.time()
 
 			cpu_info.append(end_cpu_set_affinity - start_cpu_set_affinity)
+			
 			load_model.append(end_load_model - start_load_model)
 			prepare_data.append(end_prepare_data - start_prepare_data)
 			run_inference.append(total_inference_time)
@@ -100,20 +109,20 @@ if __name__ == '__main__':
 			cpu_count.append(count)
 			batch_size_list.append(batch_size)
 
-			result = pd.DataFrame(list(
-				zip(cpu_count, cpu_info, load_model, prepare_data, run_inference, inference_per_image, total_time,
-					batch_size_list)),
-								  columns=['Number of CPU', 'Check available CPU and limit', 'Load Model',
-										   'Prepare data', 'Run Inference', 'Inference per Image', 'Total Time',
-										   'Batch size'])
-
-			result["Number of SM"] = 72 - sm
-			print(deblur_file)
+			result = pd.DataFrame(list(zip(cpu_count,cpu_info, load_model, prepare_data, run_inference,inference_per_image,  total_time, batch_size_list)),
+        	columns=['Number of CPU','Check available CPU and limit' ,'Load Model','Prepare data', 'Run Inference','Inference per Image','Total Time', 'Batch size'])
+			
+			result["Number of SM"]=sm
+			print("Results we got 2:", result)
+			print("File we got 2:", deblur_file)
 			result = pd.concat([deblur_file, result])
-			print(result)
+			print("Results we got 3:", result)
+			print("Results to put in file:", result)
 			result.to_csv('deblur_result_1.csv', index=False)
 
 		batch_size = batch_size * 2
+		
 
 	end = time.process_time()
 	print("CPU TIME", end-start)
+
